@@ -1,0 +1,532 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="./src/output.css" rel="stylesheet">
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 4.5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #99989C;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #99989C;
+        }
+
+        .responsive-sidebar {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .responsive-KotBar {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            right: 0;
+        }
+
+        @media screen and (min-width:1px) {
+            .KOT {
+                width: 30rem;
+                display: none;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+        }
+
+
+        @media screen and (min-width:1200px) {
+            .KOT {
+                width: 30rem;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .sidebar {
+                width: 15rem;
+            }
+        }
+
+        @media screen and (min-width:1024px) {
+            .KOT {
+                width: 28rem;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .sidebar {
+                width: 13rem;
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <main class="flex max-w-full max-h-full">
+        <section class="bg-lightgray h-[100vh] ">
+            <header class="bg-lightgray h-[5rem] px-6 flex justify-center items-center">
+                <div class="w-full flex justify-between items-center bg-red">
+                    <div class="flex justify-center gap-4 items-center">
+                        <img src="./images/hamburger.png" alt="" class="sm:w-6 w-4 cursor-pointer" id="menu">
+                        <p class="lg:ml-10 hidden sm:block">Hello, <span class="font-bold">Lava Pub & Restaurant</span>
+                        </p>
+                    </div>
+                    <div class="font-semibold flex items-center gap-4">
+                        <div class="px-3 py-1 bg-yellow rounded-md">
+                            <p class="text-sm font-normal">New Orders</p>
+                        </div>
+                        <div class="px-3 py-1 bg-[#1E263E] rounded-md">
+                            <p class="text-sm font-normal text-white cursor-pointer" id="KOT">KOT</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="w-full bg-lightgray h-[calc(100vh-5rem)] flex pb-4">
+                <div id="sidebar"
+                    class="space-y-2 sm:space-y-4 h-full p-2 sm:p-4 overflow-auto sidebar bg-white pt-10 sm:pt-4">
+
+                </div>
+
+                <div class=" w-full h-full">
+                    <div class="w-full h-full flex flex-col px-2 sm:px-4 ">
+                        <div class="bg-white rounded-xl py-2 sm:px-4 px-2 mx-2 flex justify-between gap-2 items-center">
+                            <input type="text" placeholder="Search Here" class="outline-none p-1 w-full">
+                            <img src="./images/search.png" alt="" class="w-6 h-6 cursor-pointer">
+                        </div>
+
+                        <div id="middlebar"
+                            class="w-full grid sm:grid-cols-3 xl:grid-cols-4 grid-cols-2 gap-4 mt-4 px-2 overflow-auto max-h-[calc(100vh-5rem)] h-[calc(100vh-5rem)]">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="KOT bg-white " id="KOT-container">
+            <div>
+                <div
+                    class="md:h-[5rem] bg-white flex md:flex-row flex-col sm:justify-between sm:px-4 px-2 md:items-center  ">
+                    <div>
+                        <p class="xl:text-xl sm:text-lg text-md sm:font-semibold">DINE IN</p>
+                        <p class="xl:text-lg sm:text-md text-sm">28 November 2023 .02:59 PM</p>
+                    </div>
+                    <div class="flex flex-col md:items-end">
+                        <div class="bg-green-600 py-[2px] w-10 px-4 rounded-xl">
+                            <p class="text-white">2</p>
+                        </div>
+                        <p class="text-green-600 text-sm font-semibold">Ground floor</p>
+                    </div>
+                    <div class="flex flex-col items-end lg:hidden absolute top-4 right-4">
+                        <p class="text-red-600 text-xl font-bold cursor-pointer" id="close-kot">X</p>
+                    </div>
+                </div>
+
+                <div class="sm:h-[4rem] h-[3rem] bg-yellow flex justify-center px-4 items-center">
+                    
+                    <p class="text-black font-semibold sm:text-[1.3rem] text-md">DIVE IN (POS)</p>
+                </div>
+                <div class="w-full sm:h-[5rem] h-[4rem] grid grid-cols-7 text-center">
+                    <div class="h-full col-span-1 bg-[#99989D] flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/cutlery.png" alt="" class="w-4 h-6">
+                        <p class="text-white text-[8px] sm:text-[10px]">Items</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5] border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/user.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Customer</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5] border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/mulusers.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Total Persons</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5] border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/suggestion.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Suggetions</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5]  border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/contact.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Waiter</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5]  border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/percentage.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Discount</p>
+                    </div>
+                    <div
+                        class="h-full col-span-1 bg-[#E8E7E5]  border-[.5px] border-white flex flex-col justify-center gap-2 px-4 items-center">
+                        <img src="./images/check.png" alt="" class="w-4 h-6">
+                        <p class="text-black text-[8px] sm:text-[10px]">Mark Paid</p>
+                    </div>
+                </div>
+
+                <div class="h-[2.2rem] bg-white flex  px-2 items-center">
+                    <p class="text-red-700 font-[600] text-[12px] sm:text-sm xl:text-[1rem]">
+                        Click on SAVE KOT / PRINT KOT to generate KOT
+                    </p>
+                </div>
+
+                <div class="h-[3rem] bg-white flex  px-2 items-center">
+                    <div
+                        class="border-t-[2px] border-b-[2px] w-full border-lightgray h-full flex justify-between items-center">
+                        <p class="text-black text-[700] text-[15px]">Bao Wow Pav</p>
+                        <div class="flex gap-1 items-center">
+                            <div
+                                class=" border-2 text-gray-500 border-[#99989D] w-8 font-semibold text-lg h-9 flex justify-center items-center">
+                                -</div>
+                            <div
+                                class=" border-2 text-gray-500 border-[#99989D] w-8 font-semibold text-sm h-9 flex justify-center items-center">
+                                1</div>
+                            <div
+                                class=" border-2 text-gray-500 border-[#99989D] w-8 font-semibold text-lg h-9 flex justify-center items-center">
+                                +</div>
+                        </div>
+                        <p class="text-gray-500 text-[700] text-[15px]">₹ 588</p>
+                        <div class="pr-4">
+                            <img src="./images/cross.png" alt="" class="w-5 h-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="p-2 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <p>Items(1)</p>
+                        <p>₹ 588.00</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>Discount(13%)</p>
+                        <p>₹ 76.44</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>SCH(5%)</p>
+                        <p>₹ 25.58</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>CGST(2.5%)</p>
+                        <p>₹ 13.43</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <p>SGST(2.5)</p>
+                        <p>₹ 13.14</p>
+                    </div>
+                    <div class="flex justify-between items-center font-bold">
+                        <p>Total</p>
+                        <p>₹ 563.99</p>
+                    </div>
+                </div>
+
+                <div class="w-full grid grid-cols-4 text-xs">
+                    <div class="bg-[#99989D] flex justify-center items-center py-3">
+                        SAVE KOT
+                    </div>
+                    <div class="bg-[#99989D] border-l-2 border-white flex justify-center items-center py-3">
+                        PRINT KOT
+                    </div>
+                    <div class="text-white bg-green-600 border-l-2 border-white flex justify-center items-center py-3">
+                        SAVE BILL
+                    </div>
+                    <div class="text-white bg-green-600 border-l-2 border-yellow flex justify-center items-center py-3">
+                        PRINT BILL
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        const menu = document.getElementById("menu")
+        const mobileNav = document.getElementById("mobile-nav")
+        const sidebar = document.getElementById("sidebar")
+        const middlebar = document.getElementById("middlebar")
+        const KOT = document.getElementById("KOT")
+        const KOTContainer = document.getElementById("KOT-container")
+        const closeKOT = document.getElementById("close-kot")
+
+        const greenImg = './images/veg.png'
+        const redImg = './images/non_veg.png'
+        let moblieView = true
+        let KOTFlag = false;
+        let sidebarFlag = false;
+        const sidebarData = [
+            {
+                id: 1,
+                title: 'All Menu',
+                price: '19 Items'
+            },
+            {
+                id: 2,
+                title: 'Pizza',
+                price: '4 Items'
+            },
+            {
+                id: 3,
+                title: 'Menu Burger',
+                price: '1 Items'
+            },
+            {
+                id: 4,
+                title: 'Swiss Roll',
+                price: '1 Items'
+            },
+            {
+                id: 5,
+                title: 'Wada Pav',
+                price: '2 Items'
+            },
+            {
+                id: 6,
+                title: 'French Fries',
+                price: '1 Items'
+            },
+            {
+                id: 7,
+                title: 'Shakes',
+                price: '10 Items'
+            },
+            {
+                id: 8,
+                title: 'All Menu',
+                price: '19 Items'
+            },
+            {
+                id: 9,
+                title: 'Pizza',
+                price: '4 Items'
+            },
+            {
+                id: 10,
+                title: 'Menu Burger',
+                price: '1 Items'
+            },
+            {
+                id: 11,
+                title: 'Swiss Roll',
+                price: '1 Items'
+            },
+            {
+                id: 12,
+                title: 'Wada Pav',
+                price: '2 Items'
+            },
+            {
+                id: 13,
+                title: 'French Fries',
+                price: '1 Items'
+            },
+            {
+                id: 14,
+                title: 'Shakes',
+                price: '10 Items'
+            }
+        ]
+
+        const middlebarData = [
+            {
+                id: 1,
+                title: 'Cheese Pizza',
+                price: '₹140',
+                color: 'red'
+            },
+            {
+                id: 2,
+                title: 'Burger',
+                price: '₹1',
+                color: 'green'
+            },
+            {
+                id: 3,
+                title: 'Cheese French Fries + Burger + ...',
+                price: '₹23',
+                color: 'red'
+            },
+            {
+                id: 4,
+                title: 'Caramel + Milkshake',
+                price: '₹55.50',
+                color: 'green'
+            },
+            {
+                id: 5,
+                title: 'Veg Steam Momos',
+                price: '₹200',
+                color: 'red'
+            },
+            {
+                id: 6,
+                title: 'Corn Pizza',
+                price: '₹99',
+                color: 'green'
+            },
+            {
+                id: 7,
+                title: 'Strawberry Swiss Roll',
+                price: '₹50',
+                color: 'green'
+            },
+            {
+                id: 8,
+                title: 'Chocolate Shake Test Durgesh',
+                price: '₹70',
+                color: 'red'
+            },
+            {
+                id: 9,
+                title: 'Veg Roll',
+                price: '₹40',
+                color: 'green'
+            },
+            {
+                id: 10,
+                title: 'Chicken Fried Momos',
+                price: '₹300',
+                color: 'green'
+            },
+            {
+                id: 11,
+                title: 'Shahi Paneer + Mix Veg + Dal Ta...',
+                price: '₹100',
+                color: 'green'
+            },
+            {
+                id: 12,
+                title: 'Bao Wow Pav',
+                price: '₹588',
+                color: 'blank'
+            },
+            {
+                id: 13,
+                title: 'Chocolate Shake Test Manoj',
+                price: '₹70',
+                color: 'red'
+            },
+            {
+                id: 14,
+                title: 'Paneer Roll',
+                price: '₹60',
+                color: 'green'
+            },
+            {
+                id: 15,
+                title: 'Kurkure Steam Special Momo',
+                price: '₹150',
+                color: 'green'
+            },
+            {
+                id: 16,
+                title: 'Tandoori Chicken Pizza',
+                price: '₹459',
+                color: 'red'
+            },
+            {
+                id: 17,
+                title: 'Tandoori Wada Pav',
+                price: '₹1',
+                color: 'red'
+            },
+            {
+                id: 18,
+                title: 'Lemon Drink',
+                price: '₹100',
+                color: 'green'
+            },
+            {
+                id: 19,
+                title: 'Chicken Roll',
+                price: '₹70',
+                color: 'red'
+            }
+        ]
+
+        const sidebarContent = sidebarData.map(item => (
+            `<div class="bg-${item.id === 1 ? 'yellow' : 'white'} px-4 py-2 h-20 w-full rounded-xl flex flex-col justify-between">
+        <p class="font-semibold">${item.title}</p>
+        <span class="text-gray-600">${item.price}</span>
+    </div>`
+        )).join('');
+
+        let crossBtn = ` <div class="flex flex-col items-end lg:hidden absolute top-4 right-4">
+<p class="text-red-600 text-xl font-bold cursor-pointer" id="close-sidebar">X</p>
+</div>`
+
+        sidebar.innerHTML = crossBtn + sidebarContent;
+
+
+        const middlebarContent = middlebarData.map(item => (
+            `<div class="bg-white px-4 py-2 h-[6rem] col-span-1 rounded-xl flex flex-col justify-between">
+        <p class="font-semibold text-sm">${item?.title}</p>
+        <div class="flex justify-between gap-2">
+            <span class="text-green-600 font-semibold text-[14px]">${item?.price}</span>
+            <img src="${item.color === 'green' ? greenImg : redImg}" alt="" class="w-6 h-6 cursor-pointer">
+        </div>
+    </div>`
+        )).join('');
+
+        middlebar.innerHTML = middlebarContent;
+
+        KOT.addEventListener('click', () => {
+            KOTContainer.classList.remove('KOT');
+            KOTContainer.classList.add('responsive-KotBar');
+            KOTFlag = !KOTFlag
+        })
+        closeKOT.addEventListener('click', () => {
+            KOTContainer.classList.add('KOT');
+            KOTContainer.classList.remove('responsive-KotBar');
+            KOTFlag = !KOTFlag
+        })
+        const closeSideBar = document.getElementById('close-sidebar')
+
+        menu.addEventListener('click', () => {
+            sidebar.classList.remove('sidebar');
+            sidebar.classList.add('responsive-sidebar');
+            sidebarFlag = !sidebarFlag
+        })
+
+        closeSideBar.addEventListener('click', () => {
+            sidebar.classList.add('sidebar');
+            sidebar.classList.remove('responsive-sidebar');
+            sidebarFlag = !sidebarFlag
+        })
+
+    </script>
+</body>
+
+</html>
